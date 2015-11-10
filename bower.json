@@ -1,0 +1,26 @@
+{
+  "name": "elliptical-controller",
+  "description": "Controller factory for an expressJS style application function/object",
+  "version":"1.0.2",
+  "main": "dist/elliptical.controller.js",
+  "authors": [
+    "S. Francis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Controller",
+    "factory"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/tachyon1337/elliptical-class",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "elliptical-utils": "~2.0.0"
+  }
+}
