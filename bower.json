@@ -1,7 +1,7 @@
 {
   "name": "elliptical-controller",
   "description": "Controller factory for an expressJS style application function/object",
-  "version":"1.0.5",
+  "version":"1.0.7",
   "main": "dist/elliptical.controller.js",
   "authors": [
     "S. Francis"
@@ -12,13 +12,21 @@
     "factory"
   ],
   "moduleType": [],
-  "homepage": "https://github.com/tachyon1337/elliptical-class",
+  "homepage": "https://github.com/ellipticaljs/controller",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    ".gitignore",
+    ".npmignore",
+    "gulpfile.js",
+    "lib",
+    "docs",
+    "index.js",
+    "umd.js",
+    "package.json"
   ],
   "dependencies": {
     "elliptical-utils": "~2.0.0"
