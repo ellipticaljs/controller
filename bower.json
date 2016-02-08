@@ -1,7 +1,7 @@
 {
   "name": "elliptical-controller",
   "description": "Controller factory for an expressJS style application function/object",
-  "version":"1.0.7",
+  "version":"1.0.8",
   "main": "dist/elliptical.controller.js",
   "authors": [
     "S. Francis"

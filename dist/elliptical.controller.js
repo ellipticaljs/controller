@@ -142,7 +142,7 @@
             clonedArgs_[0]=clonedArgs_[0].replace(/@action/g,action_);
         }
         length=clonedArgs_[0].length;
-        if(name.toLowerCase() !=='home'){
+         if(!(name.toLowerCase() ==='home' && action.toLowerCase() ==='index')){ //don't rewrite '/' as '/Home/Index'
             clonedArgs_[0] =(length>1) ? '/' + name  + clonedArgs_[0] : '/' + name;
         }
         ///private props to maintain controller name/action reference in the event of js minification
