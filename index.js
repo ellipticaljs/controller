@@ -1,3 +1,3 @@
 
 
-module.exports=require('./lib/controller')
+module.exports=require('./lib/controller');
