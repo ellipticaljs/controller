@@ -1,17 +1,15 @@
 {
   "name": "elliptical-controller",
-  "description": "Controller factory for an expressJS style application function/object",
-  "version": "1.0.8",
+  "description": "es2015 Controller Class for an expressJS style application function",
+  "version": "2.0.0",
   "author": "S. Francis",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/ellipticaljs/controller.git"
   },
-  "dependencies":{
-    "elliptical-utils": "git+https://github.com/ellipticaljs/utils.git"
-  },
   "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
     "gulp": "^3.8.7",
     "gulp-util": "^2.2.14",
     "gulp-concat": "^2.2.0",

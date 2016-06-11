@@ -1,3 +1,4 @@
 elliptical Controller
 ===========================
-Controller factory for an expressJS style application function
+es2015 Controller Class for an expressJS style application function
+

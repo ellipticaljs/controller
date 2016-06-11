@@ -13,11 +13,11 @@ gulp.task('default',function(){
 });
 
 gulp.task('build',function(){
-    concatFileStream('./lib/controller.js',DIST,BUILD_NAME);
+    concatFileStream(['./compiled/controller.js','./lib/decorators.js'],DIST,BUILD_NAME);
 });
 
 gulp.task('minify',function(){
-    minFileStream('./lib/controller.js',DIST,MIN_NAME);
+    minFileStream('./dist/elliptical.controller.js',DIST,MIN_NAME);
 });
 
 
