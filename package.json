@@ -1,7 +1,7 @@
 {
   "name": "elliptical-controller",
   "description": "es2015 Controller Class for an expressJS style application function",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "S. Francis",
   "license": "MIT",
   "repository": {

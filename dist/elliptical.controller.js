@@ -13,7 +13,7 @@
         root.elliptical.Controller = factory();
         root.returnExports = root.elliptical.Controller;
     }
-})(undefined, function () {
+})(this, function () {
     'use strict';
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
