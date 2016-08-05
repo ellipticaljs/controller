@@ -21,43 +21,63 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, Controller);
 
         this._app = app;
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        var ctrlProto = Object.getPrototypeOf(this);
+        var controllerActions = [];
+        //to handle possibility of inheritance, we must traverse the prototype chain to find available actions
+        // use checkName to discard duplicate actions found further down the chain
+        do {
+            //test if we have reached the end
+            var test = Object.getPrototypeOf(ctrlProto);
+            if (test) {
+                var actions = Object.getOwnPropertyNames(ctrlProto);
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
 
-        try {
-            for (var _iterator = Object.getOwnPropertyNames(Object.getPrototypeOf(this))[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var action = _step.value;
+                try {
+                    for (var _iterator = actions[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var action = _step.value;
 
-                var fn = this[action];
-                var method = 'get';
-                if (action !== 'constructor') {
-                    if (!(fn instanceof Function)) {
-                        method = fn.method;
-                        fn = fn.value;
+                        var fn = ctrlProto[action];
+                        var method = 'get';
+                        if (action !== 'constructor') {
+                            if (!(fn instanceof Function)) {
+                                method = fn.method;
+                                fn = fn.value;
+                            }
+                            if (checkName(action, controllerActions)) {
+                                bindControllerAction(fn, action, method, route, name, app, this);
+                            }
+                        }
                     }
-                    bindControllerAction(fn, action, method, route, name, app, this);
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
                 }
             }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
+        } while (ctrlProto = Object.getPrototypeOf(ctrlProto));
     };
+
+    function checkName(action, controllerActions) {
+        var isValid = true;
+        controllerActions.forEach(function (a) {
+            if (a.toLowerCase() === action.toLowerCase()) isValid = false;else controllerActions.push(action);
+        });
+        return isValid;
+    }
 
     function bindControllerAction(actionFn, actionName, method, route, controllerName, app, controllerContext) {
         var length;
-        var args = [];
         if (actionName === 'Index' && !testIndexProp(route)) {
             //e.g.,: "/Home/Index" =>"/Home", "/Product/Index/1" => "/Product/Index/1"
             route = route.replace(/@action/g, '');
@@ -70,8 +90,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             //don't rewrite '/' as '/Home/Index'
             route = length > 1 ? '/' + controllerName + route : '/' + controllerName;
         }
-        ///private props to maintain controller name/action reference in the event of js minification
+
+        //bind controller "this" context to controller action methods
         actionFn = actionFn.bind(controllerContext);
+        ///private props to maintain controller name/action reference in the event of js minification
         actionFn.__name = controllerName;
         actionFn.__action = actionName;
         app[method.toLowerCase()].call(controllerContext, route, actionFn);
