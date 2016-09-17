@@ -1,6 +1,6 @@
 'use strict';
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 //umd pattern
 
@@ -16,7 +16,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         root.elliptical.Controller = factory();
         root.returnExports = root.elliptical.Controller;
     }
-})(undefined, function () {
+})(this, function () {
+    
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    
     var Controller = function Controller(app, name, route) {
         _classCallCheck(this, Controller);
 
